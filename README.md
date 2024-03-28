@@ -21,7 +21,7 @@ This codespace environment should be setup properly. This includes the ability t
 ## Build/Run
 To build and run:
 ```
- cmake -S . -B build && cmake --build build --target test_suite test
+ cmake -S . -B build && cmake --build build --target run-tests
 ```
 
 ## Example Answers

@@ -1,0 +1,4 @@
+#ifndef ROCKPAPERSCISSORS_H
+#define ROCKPAPERSCISSORS_H
+
+#endif
