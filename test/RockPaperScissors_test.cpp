@@ -3,14 +3,6 @@
 
 class RockPaperScissors_test : public ::testing::Test
 {
-protected:
-   void SetUp() override
-   {
-   }
-
-   void TearDown() override
-   {
-   }
 };
 
 TEST_F(RockPaperScissors_test, Player1ShouldLoseWhenPlayer1PlaysScissorsAndPlayer2PlaysRock)
