@@ -8,6 +8,7 @@ Result_t RockPaperScissors_Play(Move_t player1, Move_t player2)
   }
   else if (
       (player1 == Move_Paper && player2 == Move_Scissors) ||
+      (player1 == Move_Rock && player2 == Move_Paper) ||
       (player1 == Move_Scissors && player2 == Move_Rock))
   {
     return Result_Lose;
