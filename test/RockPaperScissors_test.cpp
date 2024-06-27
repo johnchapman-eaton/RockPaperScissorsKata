@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
+#include "RockPaperScissors.h"
 
-class name : public ::testing::Test
+class RockPaperScissors_test : public ::testing::Test
 {
 protected:
    void SetUp() override
@@ -12,7 +13,7 @@ protected:
    }
 };
 
-TEST_F(name, FirstTest)
+TEST_F(RockPaperScissors_test, Player1ShouldLoseWhenPlayer1PlaysScissorsAndPlayer2PlaysRock)
 {
-   FAIL() << "I ran!!!";
+  EXPECT_EQ(Result_Lose, RockPaperScissors_Play(Move_Scissors, Move_Rock));
 }
