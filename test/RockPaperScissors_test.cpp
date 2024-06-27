@@ -25,10 +25,10 @@ TEST_F(RockPaperScissors_test, Player1ShouldWinWhenPlayer1PlaysScissorsAndPlayer
   EXPECT_EQ(Result_Win, RockPaperScissors_Play(Move_Scissors, Move_Paper));
 }
 
-// TEST_F(RockPaperScissors_test, Player1ShouldLoseWhenPlayer1PlaysPaperAndPlayer2PlaysScissors)
-// {
-//   EXPECT_EQ(Result_Lose, RockPaperScissors_Play(Move_Paper, Move_Scissors));
-// }
+TEST_F(RockPaperScissors_test, Player1ShouldLoseWhenPlayer1PlaysPaperAndPlayer2PlaysScissors)
+{
+  EXPECT_EQ(Result_Lose, RockPaperScissors_Play(Move_Paper, Move_Scissors));
+}
 
 // TEST_F(RockPaperScissors_test, Player1ShouldWinWhenPlayer1PlaysPaperAndPlayer2PlaysRock)
 // {
