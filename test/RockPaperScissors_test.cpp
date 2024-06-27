@@ -14,3 +14,8 @@ TEST_F(RockPaperScissors_test, Player1ShouldWinWhenPlayer1PlaysScissorsAndPlayer
 {
   EXPECT_EQ(Result_Win, RockPaperScissors_Play(Move_Scissors, Move_Paper));
 }
+
+TEST_F(RockPaperScissors_test, TheyShouldDrawWhenBothPlayersPlayScissors)
+{
+  EXPECT_EQ(Result_Draw, RockPaperScissors_Play(Move_Scissors, Move_Scissors));
+}
