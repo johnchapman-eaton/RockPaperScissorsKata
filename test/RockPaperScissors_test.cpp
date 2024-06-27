@@ -1,51 +1,34 @@
 #include <gtest/gtest.h>
 #include "RockPaperScissors.h"
 
-class RockPaperScissors_test : public ::testing::Test
+class RockPaperScissors_test : public ::testing::TestWithParam<std::tuple<Move_t, Move_t, Result_t>>
 {
 };
 
-TEST_F(RockPaperScissors_test, TheyShouldDrawWhenBothPlayersPlayRock)
+TEST_P (RockPaperScissors_test, RockPaperScissorsTest)
 {
-  EXPECT_EQ(Result_Draw, RockPaperScissors_Play(Move_Rock, Move_Rock));
+  Move_t player1 = std::get<0>(GetParam());
+  Move_t player2 = std::get<1>(GetParam());
+  Result_t expected = std::get<2>(GetParam());
+
+  EXPECT_EQ(expected, RockPaperScissors_Play(player1, player2));
 }
 
-TEST_F(RockPaperScissors_test, TheyShouldDrawWhenBothPlayersPlayPaper)
-{
-  EXPECT_EQ(Result_Draw, RockPaperScissors_Play(Move_Paper, Move_Paper));
-}
+INSTANTIATE_TEST_SUITE_P(
+  RockPaperScissorsTests,
+  RockPaperScissors_test,
+  ::testing::Values(
+    std::make_tuple(Move_Rock, Move_Rock, Result_Draw),
+    std::make_tuple(Move_Paper, Move_Paper, Result_Draw),
+    std::make_tuple(Move_Scissors, Move_Scissors, Result_Draw),
 
-TEST_F(RockPaperScissors_test, TheyShouldDrawWhenBothPlayersPlayScissors)
-{
-  EXPECT_EQ(Result_Draw, RockPaperScissors_Play(Move_Scissors, Move_Scissors));
-}
+    std::make_tuple(Move_Rock, Move_Scissors, Result_Win),
+    std::make_tuple(Move_Scissors, Move_Rock, Result_Lose),
 
-TEST_F(RockPaperScissors_test, Player1ShouldWinWhenPlayer1PlaysRockAndPlayer2PlaysScissors)
-{
-  EXPECT_EQ(Result_Win, RockPaperScissors_Play(Move_Rock, Move_Scissors));
-}
+    std::make_tuple(Move_Paper, Move_Rock, Result_Win),
+    std::make_tuple(Move_Rock, Move_Paper, Result_Lose),
 
-TEST_F(RockPaperScissors_test, Player1ShouldLoseWhenPlayer1PlaysRockAndPlayer2PlaysScissors)
-{
-  EXPECT_EQ(Result_Lose, RockPaperScissors_Play(Move_Scissors, Move_Rock));
-}
-
-TEST_F(RockPaperScissors_test, Player1ShouldWinWhenPlayer1PlaysPaperAndPlayer2PlaysRock)
-{
-  EXPECT_EQ(Result_Win, RockPaperScissors_Play(Move_Paper, Move_Rock));
-}
-
-TEST_F(RockPaperScissors_test, Player1ShouldLoseWhenPlayer1PlaysScissorsAndPlayer2PlaysRock)
-{
-  EXPECT_EQ(Result_Lose, RockPaperScissors_Play(Move_Rock, Move_Paper));
-}
-
-TEST_F(RockPaperScissors_test, Player1ShouldWinWhenPlayer1PlaysScissorsAndPlayer2PlaysPaper)
-{
-  EXPECT_EQ(Result_Win, RockPaperScissors_Play(Move_Scissors, Move_Paper));
-}
-
-TEST_F(RockPaperScissors_test, Player1ShouldLoseWhenPlayer1PlaysPaperAndPlayer2PlaysScissors)
-{
-  EXPECT_EQ(Result_Lose, RockPaperScissors_Play(Move_Paper, Move_Scissors));
-}
+    std::make_tuple(Move_Scissors, Move_Paper, Result_Win),
+    std::make_tuple(Move_Paper, Move_Scissors, Result_Lose)
+  )
+);
