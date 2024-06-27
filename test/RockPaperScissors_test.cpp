@@ -9,3 +9,8 @@ TEST_F(RockPaperScissors_test, Player1ShouldLoseWhenPlayer1PlaysScissorsAndPlaye
 {
   EXPECT_EQ(Result_Lose, RockPaperScissors_Play(Move_Scissors, Move_Rock));
 }
+
+TEST_F(RockPaperScissors_test, Player1ShouldWinWhenPlayer1PlaysScissorsAndPlayer2PlaysPaper)
+{
+  EXPECT_EQ(Result_Win, RockPaperScissors_Play(Move_Scissors, Move_Paper));
+}
