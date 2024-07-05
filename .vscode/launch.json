@@ -1,0 +1,16 @@
+{
+  "configurations": [
+
+    {
+      "name": "Debug TDD",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/test_suite",
+      "preLaunchTask": "buildTdd",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+    }
+  ]
+}
