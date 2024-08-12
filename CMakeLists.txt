@@ -42,14 +42,14 @@ target_link_libraries(
 add_custom_target(coverage
   COMMAND find . -name "*.gcda" -delete
   COMMAND ./test_suite
-  COMMAND gcovr -r ${PRODUCTION_CODE} .
+  COMMAND gcovr -r ../src .
   DEPENDS test_suite)
 
 add_custom_target(coverage-report
   COMMAND find . -name "*.gcda" -delete
   COMMAND ./test_suite
   COMMAND mkdir -p coverage
-  COMMAND gcovr -b -d -r ../../src . --html-details coverage/report.html
+  COMMAND gcovr -b -d -r ../src . --html-details coverage/report.html
   DEPENDS test_suite)
 
 file(GLOB_RECURSE complexity_list "../src/*.c" "../src/*.cpp" "../src/*.cc" "../src/*.h")
@@ -58,6 +58,7 @@ add_custom_target(complexity
   COMMAND pmccabe ${complexity_list} | sort -nr | head -100)
 
 add_custom_target(run-tests DEPENDS test_suite
+  COMMAND find . -name "*.gcda" -delete
   COMMAND ./test_suite
 )
 
