@@ -1,0 +1,13 @@
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "buildTdd",
+      "command": "cmake -S . -B build && cmake --build build --target test_suite",
+      "presentation": {
+        "reveal": "never"
+      }
+    }
+  ],
+  "version": "2.0.0"
+}
